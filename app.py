@@ -5,6 +5,7 @@ from config import Config
 
 app = Flask(__name__)
 app.secret_key = Config.SECRET_KEY
+index_name = Config.INDEX
 
 # Elasticsearch 연결
 es = Elasticsearch(Config.ELASTICSEARCH_URL)
@@ -26,7 +27,7 @@ def login():
                 }
             }
         }
-        result = es.search(index="edu-data", body=body)
+        result = es.search(index=index_name, body=body)
 
         if result['hits']['total']['value'] > 0:
             session['seq'] = seq
@@ -47,9 +48,15 @@ def dashboard():
     logging.info(f"User SEQ {seq} accessed the dashboard.")
 
     # Kibana 대시보드 필터링 URL
-    kibana_dashboard_url = f"{Config.KIBANA_URL}/app/dashboards#/view/YOUR_DASHBOARD_ID?_g=(filters:!((query:(match_phrase:(SEQ:'{seq}')))))"
+    kibana_dashboard_url = f"{Config.KIBANA_URL}/app/dashboards#/view/{Config.DASHBOARD_ID}?_g=(filters:!((query:(match_phrase:(SEQ:'{seq}')))),refreshInterval:(pause:!t,value:60000),time:(from:now-4y,to:now))"
 
     return render_template('dashboard.html', kibana_dashboard_url=kibana_dashboard_url)
 
-if __name__ == '__main__':
+@app.route("/logout")
+def logout():
+    session.pop("seq", None)  # 'seq' 키를 세션에서 제거
+    logging.info("User logged out.")
+    return redirect(url_for("login"))  # 로그인 페이지로 리디렉션
+
+if __name__ == "__main__":
     app.run(debug=True)
