@@ -173,5 +173,5 @@ $ python app.py
 
 ## 📜 실행화면
 
-<img src="[복사해온 URL](https://github.com/user-attachments/assets/0f9169fd-16d3-41ca-8a85-495932157810)">
+<img src="https://github.com/user-attachments/assets/0f9169fd-16d3-41ca-8a85-495932157810">
 
