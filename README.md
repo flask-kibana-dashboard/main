@@ -31,7 +31,7 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
 
 ![Elasticsearch](https://img.shields.io/badge/elasticsearch-005571.svg?&style=for-the-badge&logo=elasticsearch&logoColor=white)
 
-- **Visualization**: Kibana 📈
+- **Visualization**
 
 ![Kibana](https://img.shields.io/badge/kibana-005571.svg?&style=for-the-badge&logo=kibana&logoColor=white)
 
