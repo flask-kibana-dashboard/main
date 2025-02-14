@@ -17,6 +17,7 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
 
 ## 🛠 기술 스택
 - **Backend**
+  
 ![Python](https://img.shields.io/badge/python-3776AB.svg?&style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/flask-000000.svg?&style=for-the-badge&logo=flask&logoColor=white)
 
