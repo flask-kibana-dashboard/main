@@ -50,7 +50,7 @@ $ pip install -r requirements.txt
 
 ### 4️⃣ 애플리케이션 실행
 ```sh
-$ flask run --host=0.0.0.0 --port=5000
+$ python app.py
 ```
 
 ---
