@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>고객번호 (SEQ) 입력</h2>
+    <form method="POST">
+        <input type="text" name="seq" placeholder="SEQ 입력" required>
+        <button type="submit">로그인</button>
+    </form>
+</body>
+</html>
