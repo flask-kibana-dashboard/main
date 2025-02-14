@@ -22,9 +22,18 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
 ![Flask](https://img.shields.io/badge/flask-000000.svg?&style=for-the-badge&logo=flask&logoColor=white)
 
  
-- **Frontend**: HTML 🎨
-- **Database & Search Engine**: Elasticsearch 🔎
+- **Frontend**
+
+![Html](https://img.shields.io/badge/html-E34F26.svg?&style=for-the-badge&logo=html&logoColor=white)
+
+  
+- **Database & Search Engine**
+
+![Elasticsearch](https://img.shields.io/badge/elasticsearch-005571.svg?&style=for-the-badge&logo=elasticsearch&logoColor=white)
+
 - **Visualization**: Kibana 📈
+
+![Kibana](https://img.shields.io/badge/kibana-005571.svg?&style=for-the-badge&logo=kibana&logoColor=white)
 
 ---
 
