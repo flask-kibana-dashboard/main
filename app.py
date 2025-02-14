@@ -1,8 +1,13 @@
 import csv
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from elasticsearch import Elasticsearch
+from config import Config
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # 세션 관리용
+
+# Elasticsearch 설정
+es = Elasticsearch(Config.ELASTICSEARCH_URL)
 
 # 🔹 CSV 파일에서 고객 데이터를 불러오는 함수
 def load_customer_data():
@@ -38,6 +43,19 @@ def customer_data():
     if "customer" in session:
         return jsonify(session["customer"])
     return jsonify({"error": "로그인이 필요합니다."}), 403
+
+@app.route('/<string:id>')
+def get_info(id):
+    body = {
+        "query": {
+            "match": {
+                "SEQ": id
+                    }
+                }
+            }
+
+    res = es.search(index='edu_data', body=body)
+    return jsonify(res.raw)
 
 if __name__ == "__main__":
     app.run(debug=True)
