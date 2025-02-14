@@ -173,5 +173,5 @@ $ python app.py
 
 ## 📜 실행화면
 
-<img src="https://github.com/user-attachments/assets/0f9169fd-16d3-41ca-8a85-495932157810">
+<img src="https://github.com/user-attachments/assets/431069ea-2712-407e-9b02-124386b4dc36">
 
