@@ -30,9 +30,8 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
 ---
 
 ## ❗ 트러블슈팅
-1. Elasticsearch 연결 오류
 
-    🛑 문제 1 : elasticsearch.exceptions.ConnectionError 발생
+🛑 문제 1. Elasticsearch 연결 오류 (elasticsearch.exceptions.ConnectionError)
 
     💬 원인:
 
@@ -48,9 +47,7 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
         
         실행 중인 포트 확인 후 적절히 수정
 
-3. 로그인 실패 (고객번호 SEQ 조회 불가)
-
-    🛑 문제 2 : Elasticsearch에서 SEQ 값을 찾을 수 없음
+🛑 문제 2 : 로그인 실패 (고객번호 SEQ 조회 불가)
 
     💬 원인:
 
@@ -72,21 +69,22 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
             }
         }
 
-    🛑 문제 3 : iframe에서 Kibana 대시보드가 로딩되지 않음
 
-    💬 원인:
+🛑 문제 3 : iframe에서 Kibana 대시보드가 로딩되지 않음
 
-        Kibana 보안 설정으로 iframe 로딩 차단됨
-        URL 필터가 올바르게 적용되지 않음
+   💬 원인:
 
-    ✅ 해결 방법:
+       Kibana 보안 설정으로 iframe 로딩 차단됨
+       URL 필터가 올바르게 적용되지 않음
 
-        Kibana 설정 변경 (kibana.yml)
-        
-        server.publicBaseUrl: "http://localhost:5601"
-        xpack.security.sameSiteCookies: None
-        
-        iframe 로딩을 허용하기 위해 설정 변경
+   ✅ 해결 방법:
+
+       Kibana 설정 변경 (kibana.yml)
+       
+       server.publicBaseUrl: "http://localhost:5601"
+       xpack.security.sameSiteCookies: None
+       
+       iframe 로딩을 허용하기 위해 설정 변경
 
 
 ---
