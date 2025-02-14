@@ -7,7 +7,10 @@ Flask와 ELK(Stack)인 Elasticsearch, Logstash, Kibana, Filebeat를 활용하여
 
 ## ✨ 주요 기능
 
-✅ 고객 번호 입력 후 Elasticsearch에서 데이터 검색 및 Kibana 시각화 제공✅ Flask 기반 웹 애플리케이션, Kibana 연동✅ Filebeat & Logstash를 이용한 실시간 데이터 수집✅ Kibana 대시보드 필터 적용을 통한 동적 데이터 조회
+✅ 고객 번호 입력 후 Elasticsearch에서 데이터 검색 및 Kibana 시각화 제공
+✅ Flask 기반 웹 애플리케이션, Kibana 연동
+✅ Filebeat & Logstash를 이용한 실시간 데이터 수집
+✅ Kibana 대시보드 필터 적용을 통한 동적 데이터 조회
 
 ## 🛠 기술 스택
 
@@ -48,7 +51,9 @@ $ flask run --host=0.0.0.0 --port=5000
 
 ## 📌 사용법
 
-1️⃣ 브라우저에서 http://localhost:5000 접속2️⃣ 고객 번호 입력 후 데이터 조회3️⃣ Kibana 대시보드에서 실시간 데이터 확인 가능
+1️⃣ 브라우저에서 http://localhost:5000 접속
+2️⃣ 고객 번호 입력 후 데이터 조회
+3️⃣ Kibana 대시보드에서 실시간 데이터 확인 가능
 
 ❗ 트러블슈팅
 
@@ -101,7 +106,11 @@ $ systemctl restart filebeat
 
 ## 💡 기여 방법
 
-1️⃣ 이 저장소를 포크합니다.2️⃣ 새로운 브랜치를 생성합니다 (git checkout -b feature-branch).3️⃣ 변경 사항을 커밋합니다 (git commit -m 'Add new feature').4️⃣ 브랜치에 푸시합니다 (git push origin feature-branch).5️⃣ Pull Request를 생성합니다.
+1️⃣ 이 저장소를 포크합니다.
+2️⃣ 새로운 브랜치를 생성합니다 (git checkout -b feature-branch).
+3️⃣ 변경 사항을 커밋합니다 (git commit -m 'Add new feature').
+4️⃣ 브랜치에 푸시합니다 (git push origin feature-branch).
+5️⃣ Pull Request를 생성합니다.
 
 ## 📜 라이선스
 
