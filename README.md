@@ -24,7 +24,7 @@ Flask와 ELK(Stack)인 **Elasticsearch, Logstash, Kibana, Filebeat**를 활용�
  
 - **Frontend**
 
-![html5](https://img.shields.io/badge/html5-E34F26.svg?&style=for-the-badge&logo=html&logoColor=white)
+![Html5](https://img.shields.io/badge/html5-E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)
 
   
 - **Database & Search Engine**
