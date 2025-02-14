@@ -65,97 +65,94 @@ $ flask run --host=0.0.0.0 --port=5000
 ## ❗ 트러블슈팅
 1. Elasticsearch 연결 오류
 
-🛑 문제: elasticsearch.exceptions.ConnectionError 발생
+    🛑 문제: elasticsearch.exceptions.ConnectionError 발생
 
-💬 원인:
+    💬 원인:
 
-Config.ELASTICSEARCH_URL 설정 오류
+        Config.ELASTICSEARCH_URL 설정 오류
+        Elasticsearch 실행되지 않음 또는 다른 포트에서 실행 중
+        방화벽 또는 보안 그룹에서 연결 차단
 
-Elasticsearch 실행되지 않음 또는 다른 포트에서 실행 중
+    ✅ 해결 방법:
 
-방화벽 또는 보안 그룹에서 연결 차단
-
-✅ 해결 방법:
-
-Elasticsearch 상태 확인
-
-curl -X GET "http://localhost:9200/_cluster/health?pretty"
-
-응답이 없거나 yellow 또는 red 상태라면 비정상 상태
-
-Elasticsearch 실행 여부 확인
-
-sudo systemctl status elasticsearch  # Linux
-
-docker ps  # Docker에서 실행 중인지 확인
-
-Flask 설정 (config.py) 수정
-
-ELASTICSEARCH_URL = "http://localhost:9200"
-
-실행 중인 포트 확인 후 적절히 수정
+        Elasticsearch 상태 확인
+        
+        curl -X GET "http://localhost:9200/_cluster/health?pretty"
+        
+        응답이 없거나 yellow 또는 red 상태라면 비정상 상태
+        
+        Elasticsearch 실행 여부 확인
+        
+        sudo systemctl status elasticsearch  # Linux
+        
+        docker ps  # Docker에서 실행 중인지 확인
+        
+        Flask 설정 (config.py) 수정
+        
+        ELASTICSEARCH_URL = "http://localhost:9200"
+        
+        실행 중인 포트 확인 후 적절히 수정
 
 2. 로그인 실패 (고객번호 SEQ 조회 불가)
 
-🛑 문제: Elasticsearch에서 SEQ 값을 찾을 수 없음
+    🛑 문제: Elasticsearch에서 SEQ 값을 찾을 수 없음
 
-💬 원인:
+    💬 원인:
 
-SEQ 필드가 존재하지 않음
+        SEQ 필드가 존재하지 않음
+        
+        match 쿼리 사용으로 정확한 검색 불가 (keyword 타입 문제)
+        
+        인덱스에 데이터가 없음
 
-match 쿼리 사용으로 정확한 검색 불가 (keyword 타입 문제)
+    ✅ 해결 방법:
 
-인덱스에 데이터가 없음
-
-✅ 해결 방법:
-
-Elasticsearch 인덱스 확인
-
-curl -X GET "http://localhost:9200/edu-data/_search?pretty"
-
-결과가 비어 있거나 SEQ 필드 없음 → 데이터 삽입 필요
-
-match 대신 term 사용하여 정확한 검색
-
-body = {
-    "query": {
-        "term": {
-            "SEQ.keyword": seq  # 정확한 일치 검색
+        Elasticsearch 인덱스 확인
+        
+        curl -X GET "http://localhost:9200/edu-data/_search?pretty"
+        
+        결과가 비어 있거나 SEQ 필드 없음 → 데이터 삽입 필요
+        
+        match 대신 term 사용하여 정확한 검색
+        
+        body = {
+            "query": {
+                "term": {
+                    "SEQ.keyword": seq  # 정확한 일치 검색
+                }
+            }
         }
-    }
-}
-
-인덱스 존재 여부 확인
-
-curl -X GET "http://localhost:9200/_cat/indices?v"
-
-edu-data 인덱스가 없으면 데이터를 다시 삽입
+        
+        인덱스 존재 여부 확인
+        
+        curl -X GET "http://localhost:9200/_cat/indices?v"
+        
+        edu-data 인덱스가 없으면 데이터를 다시 삽입
 
 3. Kibana 대시보드가 정상적으로 표시되지 않음
 
-🛑 문제: iframe에서 Kibana 대시보드가 로딩되지 않음
+    🛑 문제: iframe에서 Kibana 대시보드가 로딩되지 않음
 
-💬 원인:
+    💬 원인:
 
-Kibana 보안 설정으로 iframe 로딩 차단됨
+        Kibana 보안 설정으로 iframe 로딩 차단됨
+        
+        URL 필터가 올바르게 적용되지 않음
 
-URL 필터가 올바르게 적용되지 않음
+    ✅ 해결 방법:
 
-✅ 해결 방법:
-
-Kibana 설정 변경 (kibana.yml)
-
-server.publicBaseUrl: "http://localhost:5601"
-xpack.security.sameSiteCookies: None
-
-iframe 로딩을 허용하기 위해 설정 변경
-
-SEQ 필터 정상 동작 확인
-
-http://localhost:5601/app/dashboards#/view/YOUR_DASHBOARD_ID?_g=(filters:!((query:(match_phrase:(SEQ:'1001')))))
-
-SEQ 값이 정상적으로 전달되는지 확인
-
+        Kibana 설정 변경 (kibana.yml)
+        
+        server.publicBaseUrl: "http://localhost:5601"
+        xpack.security.sameSiteCookies: None
+        
+        iframe 로딩을 허용하기 위해 설정 변경
+        
+        SEQ 필터 정상 동작 확인
+        
+        http://localhost:5601/app/dashboards#/view/YOUR_DASHBOARD_ID?_g=(filters:!((query:(match_phrase:(SEQ:'1001')))))
+        
+        SEQ 값이 정상적으로 전달되는지 확인
 
 
 ---
