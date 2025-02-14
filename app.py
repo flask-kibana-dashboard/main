@@ -47,7 +47,7 @@ def dashboard():
     logging.info(f"User SEQ {seq} accessed the dashboard.")
 
     # Kibana 대시보드 필터링 URL
-    kibana_dashboard_url = f"{Config.KIBANA_URL}/app/dashboards#/view/YOUR_DASHBOARD_ID?_g=(filters:!((query:(match_phrase:(SEQ:'{seq}')))))"
+    kibana_dashboard_url = f"{Config.KIBANA_URL}/app/dashboards#/view/07eac22d-1200-4fba-9ab6-1d5037b97f38?_g=(filters:!((query:(match_phrase:(SEQ:'{seq}')))),refreshInterval:(pause:!t,value:60000),time:(from:now-4y,to:now))"
 
     return render_template('dashboard.html', kibana_dashboard_url=kibana_dashboard_url)
 
