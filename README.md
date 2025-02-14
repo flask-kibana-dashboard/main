@@ -1,11 +1,12 @@
 # Flask-Kibana Dashboard
 
-## ✅ 프로젝트 개요
 
+## ✅ 프로젝트 개요
 Flask와 ELK(Stack)인 Elasticsearch, Logstash, Kibana, Filebeat를 활용하여 실시간 고객 데이터를 조회할 수 있는 대시보드 애플리케이션입니다. 사용자가 고객 번호를 입력하면 해당 데이터를 조회하고, Kibana에서 시각화하여 실시간으로 확인할 수 있습니다.
 
-## ✅ 주요 기능
 
+
+## ✅ 주요 기능
 고객 번호를 입력하면 Elasticsearch에서 데이터를 검색 후 시각화된 대시보드를 제공
 
 Flask 기반의 웹 애플리케이션으로 Kibana와 연동
@@ -14,8 +15,9 @@ Filebeat 및 Logstash를 이용한 실시간 데이터 수집 및 전송
 
 Kibana 대시보드 필터 적용을 통한 동적 데이터 조회
 
-## ✅ Tools - 기술 스택
 
+
+## ✅ Tools - 기술 스택
 Backend: Flask, Python
 
 Frontend: HTML, Jinja2, Bootstrap
@@ -28,7 +30,6 @@ Visualization: Kibana
 
 
 ## ❗❗ 트러블슈팅
-
 ### 1. "Flask 세션 유지 안됨" 문제 발생
 
 문제:
@@ -47,6 +48,8 @@ from flask_session import Session
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+
+
 
 ### 2. "Kibana iframe이 로드되지 않음" 문제 발생
 
@@ -87,6 +90,9 @@ $ systemctl status filebeat
 Filebeat 재시작:
 
 $ systemctl restart filebeat
+
+
+
 
 ## ✅ 느낀점
 - 로컬 환경에서 제작한 대시보드를 다른 컴퓨터에서 열람하게 하는 데 어려움이 있었음.
