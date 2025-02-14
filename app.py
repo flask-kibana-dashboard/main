@@ -54,7 +54,8 @@ def dashboard():
 
 @app.route("/logout")
 def logout():
-    session.pop("customer", None)  # 세션에서 고객 정보 삭제
+    session.pop("seq", None)  # 'seq' 키를 세션에서 제거
+    logging.info("User logged out.")
     return redirect(url_for("login"))  # 로그인 페이지로 리디렉션
 
 if __name__ == "__main__":
