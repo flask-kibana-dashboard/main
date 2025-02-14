@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 대시보드</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h2>고객 대시보드</h2>
+    
+    <!-- 🔹 AJAX로 실시간 업데이트되는 고객 정보 -->
+    <div id="customer-info">
+        <p>고객 번호: {{ customer.customer_id }}</p>
+        <p>이름: {{ customer.name }}</p>
+        <p>나이: {{ customer.age }}</p>
+        <p>위치: {{ customer.location }}</p>
+    </div>
+
+    <!-- 🔹 Kibana 대시보드 -->
+    <iframe id="kibana-dashboard" 
+            src="http://localhost:5601/app/dashboards#/view/customer_dashboard?_g=(refreshInterval:(pause:!f,value:5000))" 
+            width="100%" height="600px">
+    </iframe>
+</body>
+</html>
